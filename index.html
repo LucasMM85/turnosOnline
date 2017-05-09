@@ -27,15 +27,20 @@
                             </div>
                             <hr>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" id="responseBody">
                             <div class="col-md-6 col-md-offset-3 alert alert-success text-center">
                                 <strong>Se ha otorgado el turno correctamente!</strong>
                             </div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Turno:</strong></h4></div><div class="col-md-6"><h4 class="pull-left" id="turno">Turno nro.</h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Nombre/s:</strong></h4></div><div class="col-md-6"><h4 class="pull-left" id="nombres">Nombres</h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Apellido/s: </strong></h4></div><div class="col-md-6"><h4 class="pull-left" id="apellidos">Apellidos</h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>DNI: </strong></h4></div><div class="col-md-6"><h4 class="pull-left" id="dni"></h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Fecha de Turno: </strong></h4></div><div class="col-md-6"><h4 class="pull-left" id="fechaTurno">Fecha de turno con hora</h4></div>
+                            <div class="col-md-6"><h4 class="pull-right"><strong>Turno:</strong></h4></div>
+                                <div class="col-md-6"><h4 class="pull-left" id="turno"></h4></div>
+                            <div class="col-md-6"><h4 class="pull-right"><strong>Nombre/s:</strong></h4></div>
+                                <div class="col-md-6"><h4 class="pull-left" id="nombres"></h4></div>
+                            <div class="col-md-6"><h4 class="pull-right"><strong>Apellido/s: </strong></h4></div>
+                                <div class="col-md-6"><h4 class="pull-left" id="apellidos"></h4></div>
+                            <div class="col-md-6"><h4 class="pull-right"><strong>DNI: </strong></h4></div>
+                                <div class="col-md-6"><h4 class="pull-left" id="dni"></h4></div>
+                            <div class="col-md-6"><h4 class="pull-right"><strong>Fecha de Turno: </strong></h4></div>
+                                <div class="col-md-6"><h4 class="pull-left" id="fechaTurno"></h4></div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +66,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sexo">Sexo:</label>
-                                            <select class="form-control" name="sexo" id="sexo">
+                                            <select class="form-control" tabindex="2" name="sexo" id="sexo">
                                                 <option value="-1" disabled selected>Seleccione...</option>
                                                 <option value="F">Femenino</option>
                                                 <option value="M">Masculino</option>

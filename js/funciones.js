@@ -8,6 +8,45 @@ $(document).ready(function () {
         } else if (sexo.val() == null){
             e.preventDefault();
             $("#formAlert").fadeIn(400);
+        } else {
+            e.preventDefault();
+            $("#formAlert").fadeOut(400, function () {
+                var request;
+
+                if (request) {
+                    request.abort();
+                }
+                var $form = $("#form-turno");
+                var $inputs = $form.find("input, select, button, textarea");
+                var serializedData = $form.serialize();
+
+                $inputs.prop("disabled", true);
+
+                request = $.ajax({
+                    url: "php/procesa.php",
+                    dataType: 'json',
+                    type: "post",
+                    data: serializedData
+                });
+
+                request.done(function (response, textStatus, jqXHR){
+                    console.log("Hooray, it worked!");
+                    completarDatos(response);
+                    $("#ajaxDivRequest").hide();
+                    $("#ajaxDivResponse").show();
+                });
+
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    console.error(
+                        "The following error occurred: "+
+                        textStatus, errorThrown
+                    );
+                });
+
+                request.always(function () {
+                    $inputs.prop("disabled", false);
+                });
+            });
         }
     });
 
@@ -15,48 +54,6 @@ $(document).ready(function () {
         e.stopPropagation();
         e.preventDefault();
         $(this).closest(".alert").fadeOut(400);
-    });
-
-    var request;
-
-    $("#form-turno").submit(function(event){
-
-        event.preventDefault();
-
-        if (request) {
-            request.abort();
-        }
-        var $form = $(this);
-        var $inputs = $form.find("input, select, button, textarea");
-        var serializedData = $form.serialize();
-
-        $inputs.prop("disabled", true);
-
-        request = $.ajax({
-            url: "php/procesa.php",
-            dataType: 'json',
-            type: "post",
-            data: serializedData
-        });
-
-        request.done(function (response, textStatus, jqXHR){
-            console.log("Hooray, it worked!");
-            $("#dni").text($inputs[0].value);
-            $("#ajaxDivRequest").hide();
-            $("#ajaxDivResponse").show();
-        });
-
-        request.fail(function (jqXHR, textStatus, errorThrown){
-            console.error(
-                "The following error occurred: "+
-                textStatus, errorThrown
-            );
-        });
-
-        request.always(function () {
-            $inputs.prop("disabled", false);
-        });
-
     });
 });
 
@@ -72,3 +69,11 @@ $(function() {
             )) e.preventDefault();
     });
 });
+
+function completarDatos($response) {
+    $('#turno').text($response._idTurno);
+    $('#nombres').text($response._nombre);
+    $('#apellidos').text($response._apellido);
+    $('#dni').text($response._dni);
+    $('#fechaTurno').text($response._fechaTurno);
+}
