@@ -23,7 +23,7 @@ $(document).ready(function () {
                 $inputs.prop("disabled", true);
 
                 request = $.ajax({
-                    url: "php/procesa.php",
+                    url: "php/procesaInscripcion.php",
                     dataType: 'json',
                     type: "post",
                     data: serializedData
@@ -31,9 +31,11 @@ $(document).ready(function () {
 
                 request.done(function (response, textStatus, jqXHR){
                     console.log("Hooray, it worked!");
-                    completarDatos(response);
-                    $("#ajaxDivRequest").hide();
-                    $("#ajaxDivResponse").show();
+                    if(response.status == 0){
+                        completarDatos(response);
+                    } else if(response.status == 1){
+                        mostrarError(response);
+                    }
                 });
 
                 request.fail(function (jqXHR, textStatus, errorThrown){
@@ -76,4 +78,12 @@ function completarDatos($response) {
     $('#apellidos').text($response._apellido);
     $('#dni').text($response._dni);
     $('#fechaTurno').text($response._fechaTurno);
+    $('#mensajeConfirmacion').text('Se ha otorgado el turno correctamente!')
+    $("#ajaxDivRequest").hide();
+    $("#ajaxDivResponse").show();
+}
+
+function mostrarError($response) {
+    $('#alertLogin').text($response.errorMessage);
+    $("#formAlert").fadeIn(400);
 }
