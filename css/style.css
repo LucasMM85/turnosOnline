@@ -86,3 +86,15 @@
     background-color: #1CA347;
     border-color: #1CA347;
 }
+
+.resultados {
+    float: left;
+}
+
+.centrado {
+    display: block;
+    margin: auto;
+    width: 80px;
+    margin-bottom: 15px;
+}
+
