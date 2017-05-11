@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: Lucas Mussi
  * Date: 8/5/2017
  * Time: 07:18
@@ -17,7 +16,6 @@ require_once("db/funcionesDb.php");
 // through the global variable $_POST, like this:
 
 if(isset($_POST['documento']) && isset($_POST['sexo'])){
-
     $documento = $_POST['documento'];
     $sexo = $_POST['sexo'];
 
@@ -31,7 +29,8 @@ if(isset($_POST['documento']) && isset($_POST['sexo'])){
         $turno->setNombre($consulta["nombres"][1]);
         $turno->setDni($documento);
         $turno->setIdTurno($consulta["idpersonafecha"][1]);
-        $turno->setFechaTurno($consulta["mensaje"][1]);
+        $turno->setDescripcionTurno($consulta["descripcion"][1]);
+        $turno->setFechaTurno(formatoFecha($consulta["fecha"][1]));
         $jsonResponse = json_encode($turno);
         $jsonResponse = addStatus($jsonResponse, $consulta["error"][0]);
     } elseif ($consulta["error"][0] == 1){
@@ -52,4 +51,8 @@ function addStatus($jsonString, $status){
 
     $jsonString = rtrim($jsonString, '}');
     return $jsonString.',"status":'.$status.'}';
+}
+
+function formatoFecha($fecha){
+    return date("d/m/Y", strtotime($fecha));
 }

@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: corvu
+ * User: Lucas Mussi
  * Date: 8/5/2017
  * Time: 09:07
  */
@@ -15,6 +14,7 @@ class Turno implements \JsonSerializable
     private $_apellido;
     private $_dni;
     private $_fechaTurno;
+    private $_descripcionTurno;
 
     /**
      * Turno constructor.
@@ -29,9 +29,7 @@ class Turno implements \JsonSerializable
     public function getIdTurno()
     {
         return $this->_idTurno;
-    }
-
-    /**
+    }/**
      * @param mixed $idTurno
      * @return Turno
      */
@@ -39,17 +37,13 @@ class Turno implements \JsonSerializable
     {
         $this->_idTurno = $idTurno;
         return $this;
-    }
-
-    /**
+    }/**
      * @return mixed
      */
     public function getNombre()
     {
         return $this->_nombre;
-    }
-
-    /**
+    }/**
      * @param mixed $nombre
      * @return Turno
      */
@@ -57,17 +51,13 @@ class Turno implements \JsonSerializable
     {
         $this->_nombre = $nombre;
         return $this;
-    }
-
-    /**
+    }/**
      * @return mixed
      */
     public function getApellido()
     {
         return $this->_apellido;
-    }
-
-    /**
+    }/**
      * @param mixed $apellido
      * @return Turno
      */
@@ -75,17 +65,13 @@ class Turno implements \JsonSerializable
     {
         $this->_apellido = $apellido;
         return $this;
-    }
-
-    /**
+    }/**
      * @return mixed
      */
     public function getDni()
     {
         return $this->_dni;
-    }
-
-    /**
+    }/**
      * @param mixed $dni
      * @return Turno
      */
@@ -93,17 +79,13 @@ class Turno implements \JsonSerializable
     {
         $this->_dni = $dni;
         return $this;
-    }
-
-    /**
+    }/**
      * @return mixed
      */
     public function getFechaTurno()
     {
         return $this->_fechaTurno;
-    }
-
-    /**
+    }/**
      * @param mixed $fechaTurno
      * @return Turno
      */
@@ -111,7 +93,22 @@ class Turno implements \JsonSerializable
     {
         $this->_fechaTurno = $fechaTurno;
         return $this;
+    }/**
+     * @return mixed
+     */
+    public function getDescripcionTurno()
+    {
+        return $this->_descripcionTurno;
+    }/**
+     * @param mixed $descripcionTurno
+     * @return Turno
+     */
+    public function setDescripcionTurno($descripcionTurno)
+    {
+        $this->_descripcionTurno = $descripcionTurno;
+        return $this;
     }
+
 
     function jsonSerialize()
     {

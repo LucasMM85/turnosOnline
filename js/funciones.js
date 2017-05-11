@@ -4,9 +4,11 @@ $(document).ready(function () {
         var sexo = $('#sexo');
         if ($.trim(documento.val()) === "") {
             e.preventDefault();
+            $('#alertLogin').text('Debe ingresar el DNI.');
             $("#formAlert").fadeIn(400);
         } else if (sexo.val() == null){
             e.preventDefault();
+            $('#alertLogin').text('Debe seleccionar el sexo.');
             $("#formAlert").fadeIn(400);
         } else {
             e.preventDefault();
@@ -78,6 +80,7 @@ function completarDatos($response) {
     $('#apellidos').text($response._apellido);
     $('#dni').text($response._dni);
     $('#fechaTurno').text($response._fechaTurno);
+    $('#descripcionTurno').text($response._descripcionTurno);
     $('#mensajeConfirmacion').text('Se ha otorgado el turno correctamente!')
     $("#ajaxDivRequest").hide();
     $("#ajaxDivResponse").show();

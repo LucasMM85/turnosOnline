@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <script type="application/javascript" src="js/jquery-3.2.1.js"></script>
@@ -19,7 +20,7 @@
                             <hr />
                     </div>
                 </div>
-                <div class="col-md-8 col-md-offset-2 collapse" id="ajaxDivResponse">
+                <div class="col-md-8 col-md-offset-2 collapse principal" id="ajaxDivResponse">
                     <div class="panel panel-login" id="queryResult">
                         <div class="panel-heading">
                             <div class="row">
@@ -31,17 +32,24 @@
                             <div class="col-md-6 col-md-offset-3 alert alert-success text-center" id="alertConfirmacion">
                                 <strong><span id="mensajeConfirmacion"></span></strong>
                             </div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Turno:</strong></h4></div>
-                                <div class="col-md-6"><h4 class="pull-left" id="turno"></h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Nombre/s:</strong></h4></div>
-                                <div class="col-md-6"><h4 class="pull-left" id="nombres"></h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Apellido/s: </strong></h4></div>
-                                <div class="col-md-6"><h4 class="pull-left" id="apellidos"></h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>DNI: </strong></h4></div>
-                                <div class="col-md-6"><h4 class="pull-left" id="dni"></h4></div>
-                            <div class="col-md-6"><h4 class="pull-right"><strong>Fecha de Turno: </strong></h4></div>
-                                <div class="col-md-6"><h4 class="pull-left" id="fechaTurno"></h4></div>
+                            <div class="col-md-offset-3 resultados">
+                                <dl class="dl-horizontal">
+                                    <dt>Turno:</dt>
+                                    <dd id="turno"></dd>
+                                    <dt>Nombre/s:</dt>
+                                    <dd id="nombres"></dd>
+                                    <dt>Apellido/s:</dt>
+                                    <dd id="apellidos"></dd>
+                                    <dt>DNI:</dt>
+                                    <dd id="dni"></dd>
+                                    <dt>Fecha de Turno:</dt>
+                                    <dd id="fechaTurno"></dd>
+                                    <dt>Hora del Turno:</dt>
+                                    <dd id="descripcionTurno"></dd>
+                                </dl>
+                            </div>
                         </div>
+                        <a class="btn btn-success centrado" id="imprimirLink" href="javascript:window.print()">Imprimir</a>
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-4" id="ajaxDivRequest">
@@ -58,7 +66,7 @@
                                     <form id="form-turno" name="form-turno" action="" method="post" role="form" style="display: block;">
                                         <div id="formAlert" class="alert alert-warning collapse">
                                             <a class="close">×</a>
-                                            <span id="alertLogin"><strong>Atención!</strong> Debe ingresar DNI y seleccionar el sexo.</span>
+                                            <span id="alertLogin"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="documento">DNI:</label>
