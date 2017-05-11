@@ -55,11 +55,13 @@ if(isset($_POST['documento']) && isset($_POST['sexo'])){
 }
 
 function addStatus($jsonString, $status){
-
     $jsonString = rtrim($jsonString, '}');
     return $jsonString.',"status":'.$status.'}';
 }
 
 function formatoFecha($fecha){
-    return date("d/m/Y", strtotime($fecha));
+    if($fecha != null){
+        return date("d/m/Y", strtotime($fecha));
+    }
+    return null;
 }
