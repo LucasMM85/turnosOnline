@@ -23,7 +23,7 @@ if(isset($_POST['documento']) && isset($_POST['sexo'])){
                                      "(2::conc.idconcurso,".valor_nulo($documento, "null")."::pub.documento, '".valor_nulo($sexo, "null")."'::pub.sexo, NULL::preg.idfecha)");
 
     $jsonResponse = null;
-    if($consulta["error"][0] == 0){
+    if($consulta["error"][0] == 0 && $consulta["cantregistros"][0] != 0){
         $turno = new Turno();
         $turno->setApellido($consulta["apellidos"][1]);
         $turno->setNombre($consulta["nombres"][1]);
@@ -40,6 +40,13 @@ if(isset($_POST['documento']) && isset($_POST['sexo'])){
         $errorMessage->setErrorMessage($mensaje);
         $jsonResponse = json_encode($errorMessage);
         $jsonResponse = addStatus($jsonResponse, $consulta["error"][0]);
+    } elseif (strcmp($consulta["errmsg"][0], "consulta vacía") == 0){
+        $mensaje = "Ocurrió un error al consultar la base de datos.";
+        $errorMessage = new ErrorInscripcion();
+        $errorMessage->setErrorType(1);
+        $errorMessage->setErrorMessage($mensaje);
+        $jsonResponse = json_encode($errorMessage);
+        $jsonResponse = addStatus($jsonResponse, 1);
     }
     header('Content-Type: application/json');
     echo $jsonResponse;
