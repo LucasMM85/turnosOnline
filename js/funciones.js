@@ -32,7 +32,6 @@ $(document).ready(function () {
                 });
 
                 request.done(function (response, textStatus, jqXHR){
-                    console.log("Hooray, it worked!");
                     if(response.status == 0){
                         completarDatos(response);
                     } else if(response.status == 1){
@@ -42,7 +41,7 @@ $(document).ready(function () {
 
                 request.fail(function (jqXHR, textStatus, errorThrown){
                     console.error(
-                        "The following error occurred: "+
+                        "Ocurrió un error: "+
                         textStatus, errorThrown
                     );
                 });

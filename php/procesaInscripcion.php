@@ -33,14 +33,14 @@ if(isset($_POST['documento']) && isset($_POST['sexo'])){
         $turno->setFechaTurno(formatoFecha($consulta["fecha"][1]));
         $jsonResponse = json_encode($turno);
         $jsonResponse = addStatus($jsonResponse, $consulta["error"][0]);
-    } elseif ($consulta["error"][0] == 1){
+    } elseif ($consulta["error"][0] == 1 && strcmp(!$consulta["errmsg"][0],"")){
         $errorMessage = new ErrorInscripcion();
         $errorMessage->setErrorType(1);
         $mensaje = substr($consulta["errmsg"][0], 0, strpos($consulta["errmsg"][0], "CONTEXT"));
         $errorMessage->setErrorMessage($mensaje);
         $jsonResponse = json_encode($errorMessage);
         $jsonResponse = addStatus($jsonResponse, $consulta["error"][0]);
-    } elseif (strcmp($consulta["errmsg"][0], "consulta vacía") == 0){
+    } else {
         $mensaje = "Ocurrió un error al consultar la base de datos.";
         $errorMessage = new ErrorInscripcion();
         $errorMessage->setErrorType(1);
