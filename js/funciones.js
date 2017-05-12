@@ -4,16 +4,51 @@ $(document).ready(function () {
         var sexo = $('#sexo');
         if ($.trim(documento.val()) === "") {
             e.preventDefault();
+            $('#alertLogin').text('Debe ingresar el DNI.');
             $("#formAlert").fadeIn(400);
         } else if (sexo.val() == null){
             e.preventDefault();
+            $('#alertLogin').text('Debe seleccionar el sexo.');
             $("#formAlert").fadeIn(400);
         } else {
             e.preventDefault();
             $("#formAlert").fadeOut(400, function () {
-                alert("Would be submitting form");
-                documento.val("");
-                sexo.val(-1);
+                var request;
+
+                if (request) {
+                    request.abort();
+                }
+                var $form = $("#form-turno");
+                var $inputs = $form.find("input, select, button, textarea");
+                var serializedData = $form.serialize();
+
+                $inputs.prop("disabled", true);
+
+                request = $.ajax({
+                    url: "php/procesaInscripcion.php",
+                    dataType: 'json',
+                    type: "post",
+                    data: serializedData
+                });
+
+                request.done(function (response, textStatus, jqXHR){
+                    if(response.status == 0){
+                        completarDatos(response);
+                    } else if(response.status == 1){
+                        mostrarError(response);
+                    }
+                });
+
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    console.error(
+                        "Ocurrió un error: "+
+                        textStatus, errorThrown
+                    );
+                });
+
+                request.always(function () {
+                    $inputs.prop("disabled", false);
+                });
             });
         }
     });
@@ -37,3 +72,20 @@ $(function() {
             )) e.preventDefault();
     });
 });
+
+function completarDatos($response) {
+    $('#turno').text($response._idTurno);
+    $('#nombres').text($response._nombre);
+    $('#apellidos').text($response._apellido);
+    $('#dni').text($response._dni);
+    $('#fechaTurno').text($response._fechaTurno);
+    $('#descripcionTurno').text($response._descripcionTurno);
+    $('#mensajeConfirmacion').text('Se ha otorgado el turno correctamente!')
+    $("#ajaxDivRequest").hide();
+    $("#ajaxDivResponse").show();
+}
+
+function mostrarError($response) {
+    $('#alertLogin').text($response.errorMessage);
+    $("#formAlert").fadeIn(400);
+}
