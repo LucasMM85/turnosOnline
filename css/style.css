@@ -113,8 +113,17 @@
 }
 .bs-callout h4 {
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
 }
+.bs-callout h5 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
 .bs-callout p:last-child {
     margin-bottom: 0;
 }
@@ -154,9 +163,22 @@
 .bs-callout-warning h4 {
     color: #f0ad4e;
 }
+.bs-callout-warning h5 {
+    color: #f0ad4e;
+}
 .bs-callout-info {
     border-left-color: #5bc0de;
 }
 .bs-callout-info h4 {
     color: #5bc0de;
+}
+
+li {
+    margin-bottom: 10px !important;
+}
+
+.center-captcha {
+    margin-left: 3.5%;
+    margin-bottom: 15px;
+    margin-top: 30px;
 }
