@@ -86,6 +86,7 @@ function completarDatos($response) {
     $('#descripcionTurno').text($response._descripcionTurno);
     $('#mensajeConfirmacion').text('Se ha otorgado el turno correctamente!')
     $("#ajaxDivRequest").hide();
+    $("#advertencia").hide();
     $("#ajaxDivResponse").show();
 }
 
