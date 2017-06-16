@@ -10,6 +10,10 @@ $(document).ready(function () {
             e.preventDefault();
             $('#alertLogin').text('Debe seleccionar el sexo.');
             $("#formAlert").fadeIn(400);
+        } else if (!$("#g-recaptcha-response").val()) {
+            e.preventDefault();
+            $('#alertLogin').text('Debe completar el captcha.');
+            $("#formAlert").fadeIn(400);
         } else {
             e.preventDefault();
             $("#formAlert").fadeOut(400, function () {
@@ -82,6 +86,7 @@ function completarDatos($response) {
     $('#descripcionTurno').text($response._descripcionTurno);
     $('#mensajeConfirmacion').text('Se ha otorgado el turno correctamente!')
     $("#ajaxDivRequest").hide();
+    $("#advertencia").hide();
     $("#ajaxDivResponse").show();
 }
 

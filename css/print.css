@@ -22,7 +22,7 @@
 }
 
 .resultados {
-    margin-left: 20%;
+    margin-left: 13%;
 }
 
 .principal {
@@ -37,4 +37,28 @@
 
 #imprimirLink {
     display: none;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    width: 60%;
+}
+
+.dl-horizontal dt {
+    font-size: 30px !important;
+    width: 235px !important;
+}
+
+.dl-horizontal dd {
+    font-size: 30px !important;
+    margin-left: 245px !important;
+}
+
+h3 {
+    font-size: 36px;
+    font-weight: bold;
 }
