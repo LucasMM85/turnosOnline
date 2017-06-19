@@ -62,3 +62,7 @@ h3 {
     font-size: 36px;
     font-weight: bold;
 }
+
+.bg-danger {
+    background-color: #f2dede;
+}
