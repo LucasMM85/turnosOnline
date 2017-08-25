@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="application/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script type="application/javascript" src="js/bootstrap.min.js"></script>
         <script type="application/javascript" src="js/funciones.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -17,9 +18,9 @@
             <div class="row">
                 <div class="panel-heading">
                     <div class="panel-title text-center">
-                        <h1 class="title">Ministerio Público Fiscal - Concurso Ayudante Judicial</h1>
-                            <hr />
-                        <h2>Turnos de exámenes de Ortografía, Conocimientos teóricos jurídicos e Informática</h2>
+                        <img src="css/logompf.png" class="img-responsive center-block logo-mpf">
+                            <hr class="big-hruler" />
+                        <h3 class="title-separator">CONCURSO PÚBLICO DE OPOSICIÓN Y ANTECEDENTES: MÉDICO FORENSE-PEDIATRA</h3>
                     </div>
                 </div>
                 <div class="col-md-8 col-md-offset-2 collapse principal" id="ajaxDivResponse">
@@ -54,11 +55,11 @@
                         <a class="btn btn-success centrado" id="imprimirLink" href="javascript:window.print()">Imprimir</a>
                     </div>
                 </div>
-                <div class="col-md-4 col-md-offset-4" id="ajaxDivRequest">
+                <div class="col-md-6 col-md-offset-3" id="ajaxDivRequest">
                     <div class="panel panel-login">
                         <div class="panel-heading">
                             <div class="row">
-                                <h3>Asignación de Turno</h3>
+                                <h3>Inscripción</h3>
                             </div>
                             <hr>
                         </div>
@@ -71,8 +72,16 @@
                                             <span id="alertLogin"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="documento">DNI:</label>
-                                            <input type="text" name="documento" id="documento" tabindex="1" class="form-control" placeholder="Nro. Documento" value="">
+                                            <label for="apellido_input">Apellido:</label>
+                                            <input type="text" name="apellido_input" id="apellido_input" tabindex="1" class="form-control" placeholder="Apellido" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nombre_input">Nombre:</label>
+                                            <input type="text" name="nombre_input" id="nombre_input" tabindex="1" class="form-control" placeholder="Nombre" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cuit">CUIT/CUIL:</label>
+                                            <input type="text" name="cuit_input" id="cuit" tabindex="1" class="form-control" placeholder="Nro. CUIT/CUIL" value="">
                                         </div>
                                         <div class="form-group">
                                             <label for="sexo">Sexo:</label>
@@ -82,6 +91,69 @@
                                                 <option value="M">Masculino</option>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="fechanac_input">Fecha de Nacimiento:</label>
+                                            <input type="text" name="fechanac_input" id="fechanac_input" tabindex="1" class="form-control" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="domicilio_input">Domicilio:</label>
+                                            <input type="text" name="domicilio_input" id="domicilio_input" tabindex="1" class="form-control" placeholder="Domicilio" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="localidad">Localidad:</label>
+                                            <select class="form-control" tabindex="2" name="localidad" id="localidad">
+                                                <option value="-1" disabled selected>Seleccione...</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cpostal_input">Código Postal:</label>
+                                            <input type="text" name="cpostal_input" id="cpostal_input" tabindex="1" class="form-control" placeholder="Código Postal" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telfijo_input">Teléfono Fijo:</label>
+                                            <input type="text" name="telfijo_input" id="telfijo_input" tabindex="1" class="form-control" placeholder="Teléfono Fijo" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telcelular_input">Teléfono Celular:</label>
+                                            <input type="text" name="telcelular_input" id="telcelular_input" tabindex="1" class="form-control" placeholder="Teléfono Celular" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email_input">E-mail:</label>
+                                            <input type="text" name="email_input" id="email_input" tabindex="1" class="form-control" placeholder="E-mail" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="titulo_univ">Título Universitario -Médico:</label>
+                                            <select class="form-control" tabindex="2" name="titulo_univ" id="titulo_univ">
+                                                <option value="-1" disabled selected>Seleccione...</option>
+                                                <option value="1">MÉDICO PEDIATRA</option>
+                                                <option value="2">MÉDICO CIRUJANO PEDIÁTRICO</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fechatitulomedico_input">Fecha de otorgamiento del título de Médico:</label>
+                                            <input type="text" name="fechatitulomedico_input" id="fechatitulomedico_input" tabindex="1" class="form-control" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fechatituloespecialidad_input">Fecha de otorgamiento del título de la especialidad médica:</label>
+                                            <input type="text" name="fechatituloespecialidad_input" id="fechatituloespecialidad_input" tabindex="1" class="form-control" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sancionado_input">¿Ha sido sancionado o excluído de la matrícula profesional o inhabilitado para el desempeño de cargos públicos?:</label>
+                                            <select class="form-control" tabindex="2" name="sancionado_input" id="sancionado_input">
+                                                <option value="-1" disabled selected>Seleccione...</option>
+                                                <option value="1">SI</option>
+                                                <option value="2">NO</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="antecedentes_input">¿Cuenta con antecedentes penales?:</label>
+                                            <select class="form-control" tabindex="2" name="antecedentes_input" id="antecedentes_input">
+                                                <option value="-1" disabled selected>Seleccione...</option>
+                                                <option value="1">SI</option>
+                                                <option value="2">NO</option>
+                                            </select>
+                                        </div>
+
                                         <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
                                         <div id="dvCaptcha" class="g-recaptcha center-captcha" data-sitekey="6LdLSyQUAAAAADqKK5aoMIif1rjcuIJ4hSKER1Xp"></div>
                                         <div class="form-group">

@@ -188,3 +188,18 @@ li {
     margin-bottom: 15px;
     margin-top: 30px;
 }
+
+.logo-mpf {
+    width: 25%;
+    margin-top: 50px;
+}
+
+.big-hruler {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top: 5px solid #eee;
+}
+
+.title-separator {
+    margin-bottom: 30px;
+}

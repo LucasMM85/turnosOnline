@@ -62,6 +62,8 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).closest(".alert").fadeOut(400);
     });
+
+
 });
 
 $(function() {
