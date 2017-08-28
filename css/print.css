@@ -28,7 +28,7 @@
 .principal {
     display: block;
     margin: auto;
-    width: 700px;
+    width: 100%;
 }
 
 .alert {
@@ -49,12 +49,12 @@
 }
 
 .dl-horizontal dt {
-    font-size: 30px !important;
-    width: 235px !important;
+    font-size: 18px !important;
+    width: 318px !important;
 }
 
 .dl-horizontal dd {
-    font-size: 30px !important;
+    font-size: 18px !important;
     margin-left: 245px !important;
 }
 
@@ -65,4 +65,10 @@ h3 {
 
 .bg-danger {
     background-color: #f2dede;
+}
+
+dl {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    margin-left: -85px !important;
 }

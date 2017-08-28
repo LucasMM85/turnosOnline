@@ -5,14 +5,15 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 
-        <script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="application/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-        <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+        <script type="application/javascript" src="js/jquery-3.2.1.js"></script>
+        <script type="application/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="application/javascript" src="js/jquery.validate.min.js"></script>
         <script type="application/javascript" src="js/bootstrap.min.js"></script>
         <script type="application/javascript" src="js/funciones.js"></script>
         <script type="application/javascript" src="js/validate.js"></script>
+        <script type="application/javascript" src="js/formProcess.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <title>Ministerio Público Fiscal - Obtención de turnos - Ayudante Judicial</title>
     </head>
@@ -30,7 +31,7 @@
                     <div class="panel panel-login" id="queryResult">
                         <div class="panel-heading">
                             <div class="row">
-                                <h3>Constancia de Turno</h3>
+                                <h3>Constancia de Inscripción</h3>
                             </div>
                             <hr>
                         </div>
@@ -40,18 +41,36 @@
                             </div>
                             <div class="col-md-offset-3 resultados">
                                 <dl class="dl-horizontal">
-                                    <dt>Turno:</dt>
-                                    <dd id="turno"></dd>
+                                    <dt>Inscripcion:</dt>
+                                    <dd id="inscripcion"></dd>
                                     <dt>Nombre/s:</dt>
                                     <dd id="nombres"></dd>
                                     <dt>Apellido/s:</dt>
                                     <dd id="apellidos"></dd>
                                     <dt>DNI:</dt>
                                     <dd id="dni"></dd>
-                                    <dt>Fecha de Turno:</dt>
-                                    <dd id="fechaTurno"></dd>
-                                    <dt>Hora del Turno:</dt>
-                                    <dd id="descripcionTurno"></dd>
+                                    <dt>CUIL:</dt>
+                                    <dd id="cuil"></dd>
+                                    <dt>Sexo:</dt>
+                                    <dd id="sexo_output"></dd>
+                                    <dt>Domicilio:</dt>
+                                    <dd id="domicilio"></dd>
+                                    <dt>Localidad:</dt>
+                                    <dd id="localidad_output"></dd>
+                                    <dt>Código Postal:</dt>
+                                    <dd id="codpostal"></dd>
+                                    <dt>Fecha de Nacimiento:</dt>
+                                    <dd id="fechanac"></dd>
+                                    <dt>Título Universitario:</dt>
+                                    <dd id="titulo_universitario"></dd>
+                                    <dt>Fecha de Título Universitario:</dt>
+                                    <dd id="fecha_titulo_univ"></dd>
+                                    <dt>Fecha de Obtención de especialidad:</dt>
+                                    <dd id="fecha_titulo_especialidad"></dd>
+                                    <dt>¿Sancionado o excluído?</dt>
+                                    <dd id="sancionado_output"></dd>
+                                    <dt>¿Antecedentes Penales?</dt>
+                                    <dd id="antecedentes_output"></dd>
                                 </dl>
                             </div>
                         </div>
@@ -83,12 +102,16 @@
                                             <input type="text" name="nombre_input" id="nombre_input" tabindex="1" class="form-control" placeholder="Nombre" value="">
                                         </div>
                                         <div class="form-group">
+                                            <label for="dni_input">DNI:</label>
+                                            <input type="text" name="dni_input" id="dni_input" tabindex="1" class="form-control" placeholder="Nro. DNI" value="">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="cuit_input">CUIT/CUIL:</label>
                                             <input type="text" name="cuit_input" id="cuit_input" tabindex="1" class="form-control" placeholder="Nro. CUIT/CUIL" value="">
                                         </div>
                                         <div class="form-group">
                                             <label for="sexo">Sexo:</label>
-                                            <select class="form-control" tabindex="2" name="sexo" id="sexo">
+                                            <select class="form-control" tabindex="1" name="sexo" id="sexo">
                                                 <option value="-1" disabled selected>Seleccione...</option>
                                                 <option value="F">Femenino</option>
                                                 <option value="M">Masculino</option>
@@ -104,7 +127,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="localidad">Localidad:</label>
-                                            <select class="form-control" tabindex="2" name="localidad" id="localidad">
+                                            <select class="form-control" tabindex="1" name="localidad" id="localidad">
                                                 <option value="-1" disabled selected>Seleccione...</option>
                                             </select>
                                         </div>
@@ -126,10 +149,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="titulo_univ">Título Universitario -Médico:</label>
-                                            <select class="form-control" tabindex="2" name="titulo_univ" id="titulo_univ">
+                                            <select class="form-control" tabindex="1" name="titulo_univ" id="titulo_univ">
                                                 <option value="-1" disabled selected>Seleccione...</option>
-                                                <option value="1">MÉDICO PEDIATRA</option>
-                                                <option value="2">MÉDICO CIRUJANO PEDIÁTRICO</option>
+                                                <option value="pediatra">MÉDICO PEDIATRA</option>
+                                                <option value="cirpediatra">MÉDICO CIRUJANO PEDIÁTRICO</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -142,18 +165,18 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sancionado_input">¿Ha sido sancionado o excluído de la matrícula profesional o inhabilitado para el desempeño de cargos públicos?:</label>
-                                            <select class="form-control" tabindex="2" name="sancionado_input" id="sancionado_input">
+                                            <select class="form-control" tabindex="1" name="sancionado_input" id="sancionado_input">
                                                 <option value="-1" disabled selected>Seleccione...</option>
                                                 <option value="1">SI</option>
-                                                <option value="2">NO</option>
+                                                <option value="0">NO</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="antecedentes_input">¿Cuenta con antecedentes penales?:</label>
-                                            <select class="form-control" tabindex="2" name="antecedentes_input" id="antecedentes_input">
+                                            <select class="form-control" tabindex="1" name="antecedentes_input" id="antecedentes_input">
                                                 <option value="-1" disabled selected>Seleccione...</option>
                                                 <option value="1">SI</option>
-                                                <option value="2">NO</option>
+                                                <option value="0">NO</option>
                                             </select>
                                         </div>
 
@@ -173,43 +196,6 @@
                     </div>
                 </div>
                 <div class="clear"></div>
-                <div class="bs-callout bs-callout-danger col-md-8 col-md-offset-2">
-                    <h5>Lugar de Examen: Mendoza N° 1.050, San Miguel de Tucumán</h5>
-                </div>
-                <div class="bs-callout bs-callout-danger col-md-8 col-md-offset-2">
-                    <h4>Importante</h4>
-                    <p>
-                        Se recuerda a los postulantes los puntos del reglamento que resultan relevantes a los exámenes de Ortografía, Derecho e Informática:
-                    </p>
-                    <ul>
-                        <li>
-                            La documentación que deberá presentar para rendir es la siguiente:
-                            <ul>
-                                <li>
-                                    DNI vigente y fotocopia de ambas caras. No se aceptará constancia de solicitud de trámite
-                                    para DNI ni ningún otro medio de identificación personal.
-                                </li>
-                                <li>
-                                    Constancia de Turno de exámenes impresa.
-                                </li>
-                            </ul>
-                            <p class="bg-danger">No se permitirá rendir a los postulantes que se presenten sin la totalidad de la documentación antes detallada y, por consiguiente,
-                                quedarán excluidos automáticamente del concurso. No se admitirá justificación alguna.</p>
-                        </li>
-                        <li>
-                            El acceso a la sala donde se tomen los exámenes será restringido. Los concursantes no podrán ingresar a ella con computadoras, tablets,
-                            teléfono celular, pen drive, tarjetas de memoria, smartwatch o cualquier otro aparato/dispositivo de comunicación o electrónico.
-                            De igual manera, no se permite ingresar a la sala con material de consulta alguno, carteras, bolsos, carpetas, libros, mochilas,
-                            lapiceras, lápices etc.
-                            Cualquier violación a estas disposiciones implicará la expulsión del postulante del examen y del concurso. El personal afectado al
-                            proceso del Concurso, no será por ningún motivo responsable de la guarda de objetos personales de los postulantes.
-                        </li>
-                        <li>
-                            Quien se ausente en la fecha fijada para la evaluación, llegue tarde o se retire durante la prueba sin finalizarla, quedará eliminado
-                            automáticamente. No se admitirá justificación alguna.
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </body>

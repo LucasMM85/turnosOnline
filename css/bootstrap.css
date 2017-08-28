@@ -1440,6 +1440,7 @@ ol ol {
 dl {
   margin-top: 0;
   margin-bottom: 20px;
+  margin-left: -70px;
 }
 dt,
 dd {
@@ -1454,7 +1455,7 @@ dd {
 @media (min-width: 768px) {
   .dl-horizontal dt {
     float: left;
-    width: 160px;
+    width: 247px;
     overflow: hidden;
     clear: left;
     text-align: right;
@@ -1462,7 +1463,7 @@ dd {
     white-space: nowrap;
   }
   .dl-horizontal dd {
-    margin-left: 180px;
+    margin-left: 256px;
   }
 }
 abbr[title],

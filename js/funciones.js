@@ -1,62 +1,4 @@
 $(document).ready(function () {
-    /*$('form[name="form-turno"]').on("submit", function (e) {
-        var documento = $(this).find('input[name="documento"]');
-        var sexo = $('#sexo');
-        if ($.trim(documento.val()) === "") {
-            e.preventDefault();
-            $('#alertLogin').text('Debe ingresar el DNI.');
-            $("#formAlert").fadeIn(400);
-        } else if (sexo.val() == null){
-            e.preventDefault();
-            $('#alertLogin').text('Debe seleccionar el sexo.');
-            $("#formAlert").fadeIn(400);
-        } else if (!$("#g-recaptcha-response").val()) {
-            e.preventDefault();
-            $('#alertLogin').text('Debe completar el captcha.');
-            $("#formAlert").fadeIn(400);
-        } else {
-            e.preventDefault();
-            $("#formAlert").fadeOut(400, function () {
-                var request;
-
-                if (request) {
-                    request.abort();
-                }
-                var $form = $("#form-turno");
-                var $inputs = $form.find("input, select, button, textarea");
-                var serializedData = $form.serialize();
-
-                $inputs.prop("disabled", true);
-
-                request = $.ajax({
-                    url: "php/procesaInscripcion.php",
-                    dataType: 'json',
-                    type: "post",
-                    data: serializedData
-                });
-
-                request.done(function (response, textStatus, jqXHR){
-                    if(response.status == 0){
-                        completarDatos(response);
-                    } else if(response.status == 1){
-                        mostrarError(response);
-                    }
-                });
-
-                request.fail(function (jqXHR, textStatus, errorThrown){
-                    console.error(
-                        "Ocurrió un error: "+
-                        textStatus, errorThrown
-                    );
-                });
-
-                request.always(function () {
-                    $inputs.prop("disabled", false);
-                });
-            });
-        }
-    });*/
-
     $(".alert").find(".close").on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -79,7 +21,18 @@ $(document).ready(function () {
         }).on('change', function () {
             $(this).valid();
         });
-    })
+    });
+
+    $( function() {
+        $.getJSON("php/db/localidades.php", function (resultado){
+            $.each(resultado, function(i, campo){
+                $('#localidad').append($('<option>', {
+                    value: campo.idLocalidad,
+                    text: campo.nombreLocalidad
+                }));
+            });
+        });
+    });
 
 });
 
@@ -97,13 +50,22 @@ $(function() {
 });
 
 function completarDatos($response) {
-    $('#turno').text($response._idTurno);
-    $('#nombres').text($response._nombre);
-    $('#apellidos').text($response._apellido);
-    $('#dni').text($response._dni);
-    $('#fechaTurno').text($response._fechaTurno);
-    $('#descripcionTurno').text($response._descripcionTurno);
-    $('#mensajeConfirmacion').text('Se ha otorgado el turno correctamente!')
+    $('#inscripcion').text($response.idInscripcion);
+    $('#nombres').text($response.persona.nombre);
+    $('#apellidos').text($response.persona.apellido);
+    $('#fechanac').text($response.persona.fechanac);
+    $('#dni').text($response.persona.documento);
+    $('#cuil').text($response.persona.cuil);
+    $('#sexo_output').text($('#sexo option:selected').text());
+    $('#domicilio').text($response.persona.domicilio);
+    $('#localidad_output').text($('#localidad option:selected').text());
+    $('#codpostal').text($response.persona.codpostal);
+    $('#titulo_universitario').text($('#titulo_univ option:selected').text());
+    $('#fecha_titulo_univ').text($response.persona.fechaTituloUniversitario);
+    $('#fecha_titulo_especialidad').text($response.persona.fechaTituloEspecialidad);
+    $('#sancionado_output').text($('#sancionado_input option:selected').text());
+    $('#antecedentes_output').text($('#antecedentes_input option:selected').text());
+    $('#mensajeConfirmacion').text('Se ha inscripto/modificado correctamente!')
     $("#ajaxDivRequest").hide();
     $("#advertencia").hide();
     $("#ajaxDivResponse").show();
@@ -112,4 +74,9 @@ function completarDatos($response) {
 function mostrarError($response) {
     $('#alertLogin').text($response.errorMessage);
     $("#formAlert").fadeIn(400);
+}
+
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
 }
