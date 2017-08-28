@@ -203,3 +203,29 @@ li {
 .title-separator {
     margin-bottom: 30px;
 }
+
+.campo-error {
+    color: red;
+    border: 2px solid #f00;
+}
+
+.campo-valido {
+    color: green;
+    border: 2px solid green;
+}
+
+.campo-error::-webkit-input-placeholder {
+    color: red;
+}
+
+.campo-error::-moz-placeholder {
+    color: red;
+}
+
+.datepicker:read-only{
+    background-color: white;
+}
+
+.datepicker:-moz-read-only {
+    background-color: white;
+}

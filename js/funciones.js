@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('form[name="form-turno"]').on("submit", function (e) {
+    /*$('form[name="form-turno"]').on("submit", function (e) {
         var documento = $(this).find('input[name="documento"]');
         var sexo = $('#sexo');
         if ($.trim(documento.val()) === "") {
@@ -55,7 +55,7 @@ $(document).ready(function () {
                 });
             });
         }
-    });
+    });*/
 
     $(".alert").find(".close").on("click", function (e) {
         e.stopPropagation();
@@ -63,11 +63,28 @@ $(document).ready(function () {
         $(this).closest(".alert").fadeOut(400);
     });
 
+    $( function() {
+        $(".datepicker").datepicker({
+            showButtonPanel: true,
+            closeText: 'Cerrar',
+            currentText: 'Hoy',
+            dateFormat: 'dd/mm/yy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            showOtherMonths: true,
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1930:+0D'
+        }).on('change', function () {
+            $(this).valid();
+        });
+    })
 
 });
 
 $(function() {
-    $('#documento').keydown(function(e) {
+    $('#cuit_input').keydown(function(e) {
         var key   = e.keyCode ? e.keyCode : e.which;
 
         if (!( [8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
