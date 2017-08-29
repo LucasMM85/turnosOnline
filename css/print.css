@@ -48,18 +48,8 @@
     width: 60%;
 }
 
-.dl-horizontal dt {
-    font-size: 18px !important;
-    width: 318px !important;
-}
-
-.dl-horizontal dd {
-    font-size: 18px !important;
-    margin-left: 245px !important;
-}
-
 h3 {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -67,8 +57,10 @@ h3 {
     background-color: #f2dede;
 }
 
-dl {
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;
-    margin-left: -85px !important;
+.resultados dl {
+    width: 100% !important;
+}
+
+.user-label {
+    width: 33em !important;
 }

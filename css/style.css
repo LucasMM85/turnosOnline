@@ -230,3 +230,50 @@ li {
     background-color: white;
 }
 
+
+.resultados dt {
+    width: 270px;
+}
+
+.resultados dt, dd {
+    font-size: 15px;
+}
+
+@media (min-width: 768px){
+    .resultados dd {
+        margin-left: 48%;
+
+    }
+
+    .center-buttons {
+        width: 43%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 400px){
+    .center-buttons {
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1200px){
+    .center-buttons {
+        width: 89%;
+        margin: 0 auto;
+    }
+}
+
+.user-label {
+    float:left;
+    clear:left;
+    width:25em;/* tune this, you may other div for input too*/
+    text-align: right;
+    font-weight: bold;
+}
+
+.user-value{
+    float:left;
+    margin-left: 10px;
+}

@@ -19,7 +19,7 @@ function parametros_conexion_pg(){
 }
 
 function asignarTurno($consulta){
-    ini_set('display_errors',0);
+    ini_set('display_errors',1);
     $cadenaconexion = parametros_conexion_pg();
     $conexion = pg_connect($cadenaconexion);
 

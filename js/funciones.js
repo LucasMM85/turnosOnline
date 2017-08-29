@@ -34,6 +34,8 @@ $(document).ready(function () {
         });
     });
 
+    procesarFormVerConstancia();
+
 });
 
 $(function() {
@@ -79,4 +81,40 @@ function mostrarError($response) {
 function topFunction() {
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
+}
+
+function mostrarInscripcion(){
+    $('#contenedorInicial').hide();
+    $('#ajaxDivRequest').show();
+}
+
+function mostrarVerConstancia() {
+    $('#contenedorInicial').hide();
+    $('#contenedorVerConstancia').show();
+}
+
+function verConstancia($response, $pantallaInicial) {
+    $('#inscripcion').text($response.idInscripcion);
+    $('#nombres').text($response.persona.nombre);
+    $('#apellidos').text($response.persona.apellido);
+    $('#fechanac').text($response.persona.fechanac);
+    $('#dni').text($response.persona.documento);
+    $('#cuil').text($response.persona.cuil);
+    $('#sexo_output').text($response.persona.sexo);
+    $('#domicilio').text($response.persona.domicilio);
+    $('#localidad_output').text($response.persona.localidad);
+    $('#codpostal').text($response.persona.codpostal);
+    $('#titulo_universitario').text($response.persona.tituloUniversitario);
+    $('#fecha_titulo_univ').text($response.persona.fechaTituloUniversitario);
+    $('#fecha_titulo_especialidad').text($response.persona.fechaTituloEspecialidad);
+    $('#sancionado_output').text($response.persona.sancion);
+    $('#antecedentes_output').text($response.persona.antecedentes);
+    $("#"+$pantallaInicial).hide();
+    $("#alertConfirmacion").hide();
+    $("#ajaxDivResponse").show();
+}
+
+function errorVerConstancia(error) {
+    $('#alertVerConstancia').text(error.errorMessage);
+    $("#formVerConstanciaAlert").fadeIn(400);
 }

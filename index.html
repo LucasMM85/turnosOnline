@@ -15,7 +15,7 @@
         <script type="application/javascript" src="js/validate.js"></script>
         <script type="application/javascript" src="js/formProcess.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
-        <title>Ministerio Público Fiscal - Obtención de turnos - Ayudante Judicial</title>
+        <title>Ministerio Público Fiscal</title>
     </head>
     <body>
         <div class="container">
@@ -24,10 +24,12 @@
                     <div class="panel-title text-center">
                         <img src="css/logompf.png" class="img-responsive center-block logo-mpf">
                             <hr class="big-hruler" />
-                        <h3 class="title-separator">CONCURSO PÚBLICO DE OPOSICIÓN Y ANTECEDENTES: MÉDICO FORENSE-PEDIATRA</h3>
+                        <h3 class="title-separator">CONCURSO PÚBLICO DE OPOSICIÓN Y ANTECEDENTES DE MÉDICO FORENSE – PEDIATRA</h3>
                     </div>
                 </div>
-                <div class="col-md-8 col-md-offset-2 collapse principal" id="ajaxDivResponse">
+
+                <!-- CONSTANCIA DE INSCRIPCION -->
+                <div class="col-md-10 col-md-offset-1 collapse principal" id="ajaxDivResponse">
                     <div class="panel panel-login" id="queryResult">
                         <div class="panel-heading">
                             <div class="row">
@@ -39,45 +41,139 @@
                             <div class="col-md-6 col-md-offset-3 alert alert-success text-center" id="alertConfirmacion">
                                 <strong><span id="mensajeConfirmacion"></span></strong>
                             </div>
-                            <div class="col-md-offset-3 resultados">
-                                <dl class="dl-horizontal">
-                                    <dt>Inscripcion:</dt>
-                                    <dd id="inscripcion"></dd>
-                                    <dt>Nombre/s:</dt>
-                                    <dd id="nombres"></dd>
-                                    <dt>Apellido/s:</dt>
-                                    <dd id="apellidos"></dd>
-                                    <dt>DNI:</dt>
-                                    <dd id="dni"></dd>
-                                    <dt>CUIL:</dt>
-                                    <dd id="cuil"></dd>
-                                    <dt>Sexo:</dt>
-                                    <dd id="sexo_output"></dd>
-                                    <dt>Domicilio:</dt>
-                                    <dd id="domicilio"></dd>
-                                    <dt>Localidad:</dt>
-                                    <dd id="localidad_output"></dd>
-                                    <dt>Código Postal:</dt>
-                                    <dd id="codpostal"></dd>
-                                    <dt>Fecha de Nacimiento:</dt>
-                                    <dd id="fechanac"></dd>
-                                    <dt>Título Universitario:</dt>
-                                    <dd id="titulo_universitario"></dd>
-                                    <dt>Fecha de Título Universitario:</dt>
-                                    <dd id="fecha_titulo_univ"></dd>
-                                    <dt>Fecha de Obtención de especialidad:</dt>
-                                    <dd id="fecha_titulo_especialidad"></dd>
-                                    <dt>¿Sancionado o excluído?</dt>
-                                    <dd id="sancionado_output"></dd>
-                                    <dt>¿Antecedentes Penales?</dt>
-                                    <dd id="antecedentes_output"></dd>
-                                </dl>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div>
+                                    <div class="user-label">Inscripcion:</div>
+                                    <div class="user-value" id="inscripcion"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Nombre/s:</div>
+                                    <div class="user-value" id="nombres"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Apellido/s:</div>
+                                    <div class="user-value" id="apellidos">Un valor extremadamente largo para probar</div>
+                                </div>
+                                <div>
+                                    <div class="user-label">DNI:</div>
+                                    <div class="user-value" id="dni">[field_country]</div>
+                                </div>
+                                <div>
+                                    <div class="user-label">CUIL:</div>
+                                    <div class="user-value" id="cuil">[field_country]</div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Sexo:</div>
+                                    <div class="user-value" id="sexo_output">[field_country]</div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Domicilio:</div>
+                                    <div class="user-value" id="domicilio">[field_country]</div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Localidad:</div>
+                                    <div class="user-value" id="localidad_output"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Código Postal:</div>
+                                    <div class="user-value" id="codpostal"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Fecha de Nacimiento:</div>
+                                    <div class="user-value" id="fechanac"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Título Universitario:</div>
+                                    <div class="user-value" id="titulo_universitario"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Fecha de Título Universitario:</div>
+                                    <div class="user-value" id="fecha_titulo_univ"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">Fecha de Obtención de especialidad:</div>
+                                    <div class="user-value" id="fecha_titulo_especialidad"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">¿Sancionado o excluído?:</div>
+                                    <div class="user-value" id="sancionado_output"></div>
+                                </div>
+                                <div>
+                                    <div class="user-label">¿Antecedentes Penales?:</div>
+                                    <div class="user-value" id="antecedentes_output"></div>
+                                </div>
                             </div>
                         </div>
                         <a class="btn btn-success centrado" id="imprimirLink" href="javascript:window.print()">Imprimir</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-md-offset-3" id="ajaxDivRequest">
+
+                <!-- PANTALLA INICIAL -->
+                <div class="col-md-4 col-md-offset-4" id="contenedorInicial">
+                    <div class="panel panel-login">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <h3>Inscripción</h3>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="panel-body" id="cuerpoInicial">
+                            <div class="center-buttons">
+                                <div class="btn-toolbar">
+                                    <a id="btnVerConstancia" class="btn btn-info btn-lg" href="javascript:mostrarVerConstancia()">Ver Constancia</a>
+                                    <a id="btnInscripcion" class="btn btn-info btn-lg" href="javascript:mostrarInscripcion()">Inscripción</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- FORMULARIO VER CONSTANCIA -->
+                <div class="col-md-4 col-md-offset-4 collapse" id="contenedorVerConstancia">
+                    <div class="panel panel-login">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <h3>Ver o Reimprimir Constancia</h3>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="panel-body" id="cuerpoVerConstancia">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="form-verConstancia" name="form-verConstancia" action="" method="post" role="form" style="display: block;">
+                                        <div id="formVerConstanciaAlert" class="alert alert-warning collapse">
+                                            <a class="close">×</a>
+                                            <span id="alertVerConstancia"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="documento-verConstancia">DNI:</label>
+                                            <input type="text" name="documento-verConstancia" id="documento-verConstancia" tabindex="1" class="form-control" placeholder="Nro. Documento" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sexo-verConstancia">Sexo:</label>
+                                            <select class="form-control" tabindex="2" name="sexo-verConstancia" id="sexo-verConstancia">
+                                                <option value="-1" disabled selected>Seleccione...</option>
+                                                <option value="F">Femenino</option>
+                                                <option value="M">Masculino</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="submit-verConstancia" id="submit-verConstancia" tabindex="4" class="form-control btn btn-login" value="Aceptar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO DE INSCRIPCION -->
+                <div class="col-md-6 col-md-offset-3 collapse" id="ajaxDivRequest">
                     <div class="panel panel-login">
                         <div class="panel-heading">
                             <div class="row">
