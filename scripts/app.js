@@ -1,20 +1,20 @@
 (function () {
 
-    var app = angular.module("turnosOnline",["ngRoute"]);
+    var app = angular.module("turnosOnline",["ngRoute","ngMessages"]);
 
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when("/inicio", {
                 templateUrl: "views/main.html",
-                controller: "controllers/MainController.js"
+                controller: "MainController"
             })
             .when("/buscarConstancia", {
                 templateUrl: "views/buscarConstancia.html",
-                controller: "controllers/BuscarConstanciaController.js"
+                controller: "BuscarConstanciaController"
             })
-            .when("/constancia", {
+            .when("/constancia/:sexo/:dni", {
                 templateUrl: "views/constancia.html",
-                controller: "controllers/ConstanciaController.js"
+                controller: "ConstanciaController"
             })
             .otherwise({
                 redirectTo: "/inicio"
