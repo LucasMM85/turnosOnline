@@ -7,8 +7,6 @@
             $location.path("/constancia/"+sexo+"/"+dni);
         };
 
-        $scope.soloNumeros = /^\d+$/;
-
         $scope.sexos = [
             {sexoId: "F", sexoName: "Femenino"},
             {sexoId: "M", sexoName: "Masculino"}

@@ -15,9 +15,16 @@ require_once("model/Inscripcion.php");
 require_once("model/Persona.php");
 require_once("model/ErrorInscripcion.php");
 require_once("db/funcionesDb.php");
+require_once("inscripcionUtils.php");
 
 //if(isset($_POST['documento']) && isset($_POST['sexo'])){
-$idConcurso = 5;
+if(empty($_POST)){
+    $postdata = json_decode(file_get_contents("php://input"),true);
+    $_POST = $postdata;
+}
+
+
+$idConcurso = 8;
 $persona = new Persona();
 $persona->setApellido($_POST['apellido_input']);
 $persona->setNombre($_POST['nombre_input']);
@@ -100,15 +107,3 @@ $query = "select * from conc.spc_inscribe('".$persona->getApellido()."'::pub.ape
     $jsonResponse = addStatus($jsonResponse, 1);
     echo $jsonResponse;
 }*/
-
-function addStatus($jsonString, $status){
-    $jsonString = rtrim($jsonString, '}');
-    return $jsonString.',"status":'.$status.'}';
-}
-
-function formatoFecha($fecha){
-    if($fecha != null){
-        return date("d/m/Y", strtotime($fecha));
-    }
-    return null;
-}

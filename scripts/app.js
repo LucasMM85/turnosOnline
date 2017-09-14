@@ -16,6 +16,10 @@
                 templateUrl: "views/constancia.html",
                 controller: "ConstanciaController"
             })
+            .when("/inscripcion", {
+                templateUrl: "views/inscripcionForm.html",
+                controller: "InscripcionFormController"
+            })
             .otherwise({
                 redirectTo: "/inicio"
             });

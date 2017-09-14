@@ -17,31 +17,38 @@
                         </div>
                         <div class="form-group">
                             <label for="apellido_input">Apellido:</label>
-                            <input type="text" name="apellido_input" id="apellido_input" tabindex="1" class="form-control" placeholder="Apellido" value="">
+                            <input type="text" name="apellido_input" id="apellido_input" tabindex="1" class="form-control"
+                                   placeholder="Apellido" value="" required>
                         </div>
                         <div class="form-group">
                             <label for="nombre_input">Nombre:</label>
-                            <input type="text" name="nombre_input" id="nombre_input" tabindex="1" class="form-control" placeholder="Nombre" value="">
+                            <input type="text" name="nombre_input" id="nombre_input" tabindex="1" class="form-control"
+                                   placeholder="Nombre" value="" required>
                         </div>
                         <div class="form-group">
                             <label for="dni_input">DNI:</label>
-                            <input type="text" name="dni_input" id="dni_input" tabindex="1" class="form-control" placeholder="Nro. DNI" value="">
+                            <input type="text" name="dni_input" id="dni_input" tabindex="1" class="form-control"
+                                   placeholder="Nro. DNI" value="" restrict-to="[0-9]" required>
                         </div>
                         <div class="form-group">
                             <label for="cuit_input">CUIT/CUIL:</label>
-                            <input type="text" name="cuit_input" id="cuit_input" tabindex="1" class="form-control" placeholder="Nro. CUIT/CUIL" value="">
+                            <input type="text" name="cuit_input" id="cuit_input" tabindex="1" class="form-control"
+                                   placeholder="Nro. CUIT/CUIL" restrict-to="[0-9]" value="">
                         </div>
                         <div class="form-group">
                             <label for="sexo">Sexo:</label>
-                            <select class="form-control" tabindex="1" name="sexo" id="sexo">
-                                <option value="-1" disabled selected>Seleccione...</option>
-                                <option value="F">Femenino</option>
-                                <option value="M">Masculino</option>
+                            <select class="form-control" tabindex="1" name="sexo" id="sexo"
+                                    ng-model="sexoId"
+                                    ng-options="sexo.sexoId as sexo.sexoName for sexo in sexos"
+                                    required>
+                                <option value="" disabled selected>Seleccione...</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="fechanac_input">Fecha de Nacimiento:</label>
-                            <input type="text" readonly="true" name="fechanac_input" id="fechanac_input" tabindex="1" class="form-control datepicker" placeholder="Seleccione la fecha" value="">
+                            <label>Fecha de Nacimiento:</label>
+                            <!-- <input type="text" readonly="true" name="fechanac_input" id="fechanac_input" tabindex="1"
+                                   class="form-control datepicker" placeholder="Seleccione la fecha" value="" required> -->
+                            <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
                         </div>
                         <div class="form-group">
                             <label for="domicilio_input">Domicilio:</label>
@@ -49,8 +56,10 @@
                         </div>
                         <div class="form-group">
                             <label for="localidad">Localidad:</label>
-                            <select class="form-control" tabindex="1" name="localidad" id="localidad">
-                                <option value="-1" disabled selected>Seleccione...</option>
+                            <select class="form-control" tabindex="1" name="localidad" id="localidad"
+                                    ng-model="idLocalidad"
+                                    ng-options="localidad.idLocalidad as localidad.nombreLocalidad for localidad in localidades">
+                                <option value="" disabled selected>Seleccione...</option>
                             </select>
                         </div>
                         <div class="form-group">

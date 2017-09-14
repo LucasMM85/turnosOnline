@@ -67,7 +67,7 @@ function procesarFormVerConstancia() {
                 $inputs.prop("disabled", true);
 
                 request = $.ajax({
-                    url: "php/buscarInscripcion.php",
+                    url: "php/buscarInscripcionMock.php",
                     dataType: 'json',
                     type: "post",
                     data: serializedData

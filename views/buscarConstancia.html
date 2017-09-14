@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <label for="documento-verConstancia">DNI:</label>
                             <input type="text" name="documento-verConstancia" id="documento-verConstancia"
-                                   ng-model="documento" ng-pattern="soloNumeros"
+                                   ng-model="documento" restrict-to="[0-9]"
                                    tabindex="1" class="form-control"
                                    placeholder="Nro. Documento" required />
                         </div>
