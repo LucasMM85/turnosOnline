@@ -10,12 +10,12 @@ require_once("model/Persona.php");
 require_once("model/ErrorInscripcion.php");
 require_once("inscripcionUtils.php");
 
-$idConcurso = 8;
 if(empty($_POST)){
     $postdata = json_decode(file_get_contents("php://input"),true);
     $_POST = $postdata;
 }
 
+$idConcurso = 8;
 $documento = $_POST['documento'];
 $sexo = $_POST['sexo'];
 

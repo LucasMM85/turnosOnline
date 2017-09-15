@@ -3,7 +3,7 @@
 
         var getConstancia = function (sexo, documento) {
 
-            datos = {'sexo' : sexo,
+            var datos = {'sexo' : sexo,
                      'documento' : documento};
             var url = "php/obtenerInscripcion.php";
 
@@ -22,8 +22,13 @@
                         });
         };
 
-        var nuevaInscripcion = function () {
+        var nuevaInscripcion = function (persona) {
+            var url = "php/procesaInscripcion.php";
 
+            return $http.post(url, persona)
+                        .then(function (response) {
+                            return response.data;
+                        });
         };
 
         return {
