@@ -15,9 +15,10 @@ require_once("db/funcionesDb.php");
 if(isset($_POST['documento']) && isset($_POST['sexo'])){
     $documento = $_POST['documento'];
     $sexo = $_POST['sexo'];
+    $idconcurso = 5;
 
     $consulta = asignarTurno("SELECT * FROM conc.spc_asigna_fecha_persona_inscripta".
-                                     "(2::conc.idconcurso,".valor_nulo($documento, "null")."::pub.documento, '".valor_nulo($sexo, "null")."'::pub.sexo, NULL::preg.idfecha)");
+                                     "($idconcurso::conc.idconcurso,".valor_nulo($documento, "null")."::pub.documento, '".valor_nulo($sexo, "null")."'::pub.sexo, NULL::preg.idfecha)");
 
     $jsonResponse = null;
     if($consulta["error"][0] == 0 && $consulta["cantregistros"][0] != 0){
