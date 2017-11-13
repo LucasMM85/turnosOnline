@@ -15,7 +15,7 @@ require_once("db/funcionesDb.php");
 if(isset($_POST['documento']) && isset($_POST['sexo'])){
     $documento = $_POST['documento'];
     $sexo = $_POST['sexo'];
-    $idconcurso = 6;
+    $idconcurso = 8;
 
     $consulta = asignarTurno("SELECT * FROM conc.spc_asigna_fecha_persona_inscripta".
                                      "($idconcurso::conc.idconcurso,".valor_nulo($documento, "null")."::pub.documento, '".valor_nulo($sexo, "null")."'::pub.sexo, NULL::preg.idfecha)");

@@ -11,7 +11,7 @@ function parametros_conexion_pg(){
     $usuario='sa';
     $clave='1';
     $nombredb='cuestionario';
-    $puerto='5432';
+    $puerto='5437';
     $host='web-mpf';
     $cadena_con="host=".$host." port=".$puerto." dbname=".$nombredb." user=".$usuario." password=".$clave."";
 
